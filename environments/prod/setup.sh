@@ -12,7 +12,7 @@ cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/
 cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
 cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini /usr/local/eosio/etc
 
-cp solutions-terraform-cloudbuild-gitops/environments/prod/backup.sh /root
-cp solutions-terraform-cloudbuild-gitops/environments/prod/start_nodeos.sh /root
+cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
+cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
 
-
+rm -rf solutions-terraform-cloudbuild-gitops
