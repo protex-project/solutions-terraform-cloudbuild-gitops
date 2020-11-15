@@ -1,6 +1,6 @@
 #!/bin/bash
 apt update
-apt install mc
+apt -y install mc
 
 mkdir /usr/local/eosio
 mkdir /usr/local/eosio/bin
