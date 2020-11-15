@@ -25,7 +25,7 @@ resource "google_compute_instance" "default" {
     network = "default"
   }
 
-  metadata_startup_script = "${file("./start.sh")}"
+  metadata_startup_script = "${file("./setup.sh")}"
 }
 
 output "ip" {
