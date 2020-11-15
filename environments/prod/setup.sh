@@ -7,11 +7,12 @@ mkdir /usr/local/eosio/bin
 mkdir /usr/local/eosio/etc
 
 cd /root
-cp eosio/bin/cleos /usr/local/eosio/bin
-cp eosio/bin/nodeos /usr/local/eosio/bin
-cp eosio/etc/config.ini /usr/local/eosio/etc
+git clone https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
+cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/local/eosio/bin
+cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
+cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini /usr/local/eosio/etc
 
-cp backup.sh /root
-cp start_nodeos.sh /root
+cp solutions-terraform-cloudbuild-gitops/environments/prod/backup.sh /root
+cp solutions-terraform-cloudbuild-gitops/environments/prod/start_nodeos.sh /root
 
 
