@@ -1,6 +1,6 @@
 #!/bin/bash
 apt update
-apt -y install mc
+apt -y install mc screen libbz2-dev libstdc++6 libssl-dev libgmp3-dev build-essential libicu-dev zlib1g-dev libtinfo5 libusb-1.0-0 libfcgi-dev libcurl3-gnutls libcurl3
 
 mkdir /usr/local/eosio
 mkdir /usr/local/eosio/bin
