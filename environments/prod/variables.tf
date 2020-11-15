@@ -3,7 +3,7 @@ variable "region" {}
 variable "zone" {}
 
 variable "network" {}
-variable "subnet" {}
+variable "subnetwork" {}
 
 variable "node_name" {}
 variable "machine_type" {}
