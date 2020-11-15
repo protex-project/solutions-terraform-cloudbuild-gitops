@@ -10,7 +10,7 @@ provider "google" {
 
 resource "google_compute_instance" "default" {
   name         = "${var.node_name}"
-  machine_type = "${machine_type}"
+  machine_type = "${var.machine_type}"
   zone         = "${var.zone}"
 
   boot_disk {
