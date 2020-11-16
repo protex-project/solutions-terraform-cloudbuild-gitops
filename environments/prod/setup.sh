@@ -2,7 +2,8 @@
 
 #Установка зависимостей
 apt update
-apt -y install mc screen libbz2-dev libstdc++6 libssl-dev libgmp3-dev build-essential libicu-dev zlib1g-dev libtinfo5 libusb-1.0-0 libfcgi-dev libcurl3-gnutls libcurl3
+apt -y install mc
+#apt -y install screen libbz2-dev libstdc++6 libssl-dev libgmp3-dev build-essential libicu-dev zlib1g-dev libtinfo5 libusb-1.0-0 libfcgi-dev libcurl3-gnutls libcurl3
 
 #Прописываем ключ
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkzthK+u8woNp8FdNx8w660z7IQooVixseb1hBEFjwJgbpf53Z0hWypgfuuyIs99HqqgnwDwxpE6KmVffkezqqlIKQc6cgA+aTzmvPrp3EL8LhO+uDytcPYzwpaOCXEbjLyF/AMWx29JaoQbv5NgSO5U0Dbl6p9+HhwjWF0XZEqB3VolWJdWE4YPpeShN2RyuQgi2qFLWrQCinT5QyN7A5HEOBw5KoXF8ObbWh7JO28NTgficx58wlGVO27fcRJ4xujsMzFnBylFx2rUoleKiac6jgLc4a7gh4iqJBNRgpMvHyWMIltoPQ7bx+6sqWkioaVtCVE70Jn/09FphNVXFPw== vrmsumy" >> /root/.ssh/authorized_keys
