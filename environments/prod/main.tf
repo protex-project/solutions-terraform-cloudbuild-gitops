@@ -30,7 +30,7 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  metadata_startup_script = file("./setup.sh")
+  metadata_startup_script = templatefile("./setup.sh", {producer_name = var.producer_name, producer_pkey = var.producer_pkey, producer_pub = var.producer_pub})
 }
 
 output "ip" {
