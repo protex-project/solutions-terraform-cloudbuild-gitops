@@ -2,6 +2,10 @@ locals {
   env = "prod"
 }
 
+terraform {
+  experiments = [variable_validation]
+}
+
 provider "google" {
   project = var.project
   region  = var.region
