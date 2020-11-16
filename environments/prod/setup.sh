@@ -12,9 +12,9 @@ mkdir /usr/local/eosio/etc
 #Скачивание софта и его копирование
 cd /root
 git clone https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
-cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/local/eosio/bin
-cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
-cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini /usr/local/eosio/etc
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini /usr/local/eosio/etc
 
 #Переменные конфигурации
 sed 's/initXXX/${producer_name}/' /usr/local/eosio/etc/config.ini
@@ -22,7 +22,8 @@ sed 's/pkeyXXX/${producer_pkey}/' /usr/local/eosio/etc/config.ini
 sed 's/pubXXX/${producer_pub}/' /usr/local/eosio/etc/config.ini
 
 #Стартовые скрипты
-cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
-cp solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
 
-rm -rf solutions-terraform-cloudbuild-gitops
+#Очищаем
+#rm -rf solutions-terraform-cloudbuild-gitops
