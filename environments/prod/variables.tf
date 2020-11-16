@@ -22,10 +22,12 @@ variable "producer_name" {
 
 variable "producer_pkey" {
     type	= string
+    default	= "none"
     description = "Enter producer PRIVATE key:"
 }
 
 variable "producer_pub" {
     type	= string
+    default	= "none"
     description = "Enter producer PUBLIC key:"
 }
