@@ -24,13 +24,16 @@ cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/nodeo
 #Переменные конфигурации
 sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
 
-#Стартовые скрипты
-cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/backup.sh /root
+#Скрипты
 cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/start_nodeos.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/backup.sh /root
 
 #cron-задачи
 echo "0 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab
 killall -HUP cron
+
+#Скрипт автозапуска
+echo "/root/start_nodeos.sh" >> /etc/rc.local
 
 #Очищаем
 #rm -rf solutions-terraform-cloudbuild-gitops
