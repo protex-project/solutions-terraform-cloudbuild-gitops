@@ -33,9 +33,9 @@ variable pkeys {
 variable pubs {
     description = "Mapping for PUBLIC keys"
     default = {
-	"inita"  = "EOS5zCg5bMvi4AWugeKmiQD5iQtjSrGKdSodTPXnQMYNdeDAm7w2N"
+	"inita" = "EOS5zCg5bMvi4AWugeKmiQD5iQtjSrGKdSodTPXnQMYNdeDAm7w2N"
         "initb" = "EOS6PNy7RbvX1Tj55N7GXFJbwGCmjuDVFDxC224g36MyWTDsUpzbz"
-	"initc"  = "EOS7EXJSLeL3nSmweidjDG9tkeimmYQpt7MCjWiEfP6wDzWYJrSkH"
-	"initd"  = "EOS6W52PxQiFvWPt9DQnK5qdKXdWoJZNWbPdhXE9fBpqx554S2Zre"
+	"initc" = "EOS7EXJSLeL3nSmweidjDG9tkeimmYQpt7MCjWiEfP6wDzWYJrSkH"
+	"initd" = "EOS6W52PxQiFvWPt9DQnK5qdKXdWoJZNWbPdhXE9fBpqx554S2Zre"
     }
 }

@@ -9,6 +9,8 @@ apt -y install mc
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkzthK+u8woNp8FdNx8w660z7IQooVixseb1hBEFjwJgbpf53Z0hWypgfuuyIs99HqqgnwDwxpE6KmVffkezqqlIKQc6cgA+aTzmvPrp3EL8LhO+uDytcPYzwpaOCXEbjLyF/AMWx29JaoQbv5NgSO5U0Dbl6p9+HhwjWF0XZEqB3VolWJdWE4YPpeShN2RyuQgi2qFLWrQCinT5QyN7A5HEOBw5KoXF8ObbWh7JO28NTgficx58wlGVO27fcRJ4xujsMzFnBylFx2rUoleKiac6jgLc4a7gh4iqJBNRgpMvHyWMIltoPQ7bx+6sqWkioaVtCVE70Jn/09FphNVXFPw== vrmsumy" >> /root/.ssh/authorized_keys
 
 #Создание директорий
+mkdir /root/backup
+mkdir /root/restore
 mkdir /usr/local/eosio
 mkdir /usr/local/eosio/bin
 mkdir /usr/local/eosio/etc
@@ -25,6 +27,10 @@ sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${produc
 #Стартовые скрипты
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
+
+#cron-задачи
+echo "8 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab
+killall -HUP cron
 
 #Очищаем
 #rm -rf solutions-terraform-cloudbuild-gitops

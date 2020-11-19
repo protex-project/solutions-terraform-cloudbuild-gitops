@@ -1,5 +1,5 @@
 locals {
-  env = "prod"
+  env = "node"
   producer_pkey = "${lookup(var.pkeys, var.producer_name)}"
   producer_pub  = "${lookup(var.pubs, var.producer_name)}"
 }
