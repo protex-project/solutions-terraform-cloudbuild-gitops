@@ -18,18 +18,18 @@ mkdir /usr/local/eosio/etc
 #Скачивание софта и его копирование
 cd /root
 git clone https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
-cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/local/eosio/bin
-cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/cleos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/nodeos /usr/local/eosio/bin
 
 #Переменные конфигурации
-sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
+sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
 
 #Стартовые скрипты
-cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
-cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/backup.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/start_nodeos.sh /root
 
 #cron-задачи
-echo "8 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab
+echo "0 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab
 killall -HUP cron
 
 #Очищаем
