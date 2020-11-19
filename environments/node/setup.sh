@@ -20,6 +20,7 @@ cd /root
 git clone https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
 cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/cleos /usr/local/eosio/bin
 cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/nodeos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/keosd /usr/local/eosio/bin
 
 #Переменные конфигурации
 sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
