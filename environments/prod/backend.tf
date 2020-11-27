@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
     bucket = "protexbc-tfstate"
-    prefix = "environments/node"
+    prefix = "environments/prod"
   }
 }
