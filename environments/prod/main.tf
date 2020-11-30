@@ -5,7 +5,7 @@ locals {
 }
 
 terraform {
-#  experiments = [variable_validation]
+  experiments = [variable_validation]
 }
 
 provider "google" {
