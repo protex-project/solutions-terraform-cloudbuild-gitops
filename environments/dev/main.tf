@@ -1,40 +1,45 @@
-# Copyright 2019 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-
 locals {
-  "env" = "dev"
+  env = "node"
+  producer_pkey = "${lookup(var.pkeys, var.producer_name)}"
+  producer_pub  = "${lookup(var.pubs, var.producer_name)}"
+}
+
+terraform {
+  experiments = [variable_validation]
 }
 
 provider "google" {
-  project = "${var.project}"
+  project = var.project
+  region  = var.region
+  zone    = var.zone
 }
 
-module "vpc" {
-  source  = "../../modules/vpc"
-  project = "${var.project}"
-  env     = "${local.env}"
+resource "google_compute_instance" "default" {
+  name         = var.node_name
+  machine_type = var.machine_type
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      type  = "pd-ssd"
+      image = "ubuntu-os-cloud/ubuntu-1804-lts"
+      size  = "100"
+    }
+  }
+
+  network_interface {
+    network    = var.network
+    subnetwork = var.subnetwork
+
+    access_config {
+	# nat_ip = google_compute_address.static.address
+    }
+  }
+
+  metadata_startup_script = templatefile("./setup.sh", {producer_name = var.producer_name, producer_pkey = local.producer_pkey, producer_pub = local.producer_pub})
 }
 
-module "http_server" {
-  source  = "../../modules/http_server"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
+output "ip" {
+  value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
 }
 
-module "firewall" {
-  source  = "../../modules/firewall"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
-}

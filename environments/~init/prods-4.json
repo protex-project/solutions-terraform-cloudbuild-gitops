@@ -1,0 +1,62 @@
+{
+    "schedule": [
+        {
+            "producer_name": "inita",
+            "authority": [
+                "block_signing_authority_v0",
+                {
+                    "threshold": 1,
+                    "keys": [
+                        {
+                            "key": "EOS5zCg5bMvi4AWugeKmiQD5iQtjSrGKdSodTPXnQMYNdeDAm7w2N",
+                            "weight": 1
+                        }
+                    ]
+                }
+            ]
+        },{
+            "producer_name": "initb",
+            "authority": [
+                "block_signing_authority_v0",
+                {
+                    "threshold": 1,
+                    "keys": [
+                        {
+                            "key": "EOS6PNy7RbvX1Tj55N7GXFJbwGCmjuDVFDxC224g36MyWTDsUpzbz",
+                            "weight": 1
+                        }
+                    ]
+                }
+            ]
+        },{
+            "producer_name": "initc",
+            "authority": [
+                "block_signing_authority_v0",
+                {
+                    "threshold": 1,
+                    "keys": [
+                        {
+                            "key": "EOS7EXJSLeL3nSmweidjDG9tkeimmYQpt7MCjWiEfP6wDzWYJrSkH",
+                            "weight": 1
+                        }
+                    ]
+                }
+            ]
+        },{
+            "producer_name": "initd",
+            "authority": [
+                "block_signing_authority_v0",
+                {
+                    "threshold": 1,
+                    "keys": [
+                        {
+                            "key": "EOS6W52PxQiFvWPt9DQnK5qdKXdWoJZNWbPdhXE9fBpqx554S2Zre",
+                            "weight": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
