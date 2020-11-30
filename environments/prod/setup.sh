@@ -33,6 +33,10 @@ cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/backup.sh
 echo "0 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab
 killall -HUP cron
 
+#Логи
+echo -e "/var/log/nodeos.log {\n rotate 14\n daily\n compress\n missingok\n notifempty\n}" >> /etc/logrotate.d/nodeos
+
+
 #Скрипт автозапуска
 echo "/root/start_nodeos.sh" >> /etc/rc.local
 
