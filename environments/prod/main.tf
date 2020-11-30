@@ -39,7 +39,3 @@ resource "google_compute_instance" "default" {
   metadata_startup_script = templatefile("./setup.sh", {producer_name = var.producer_name, producer_pkey = local.producer_pkey, producer_pub = local.producer_pub})
 }
 
-output "ip" {
-  value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
-}
-
