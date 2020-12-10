@@ -2,7 +2,7 @@
 
 #Установка зависимостей
 apt update
-apt -y install mc
+apt -y install mc python-pip fabric
 #apt -y install screen libbz2-dev libstdc++6 libssl-dev libgmp3-dev build-essential libicu-dev zlib1g-dev libtinfo5 libusb-1.0-0 libfcgi-dev libcurl3-gnutls libcurl3
 
 #Прописываем ключ
@@ -18,16 +18,17 @@ mkdir /usr/local/eosio/etc
 #Скачивание софта и его копирование
 cd /root
 git clone https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
-cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/cleos /usr/local/eosio/bin
-cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/nodeos /usr/local/eosio/bin
-cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/bin/keosd /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/keosd /usr/local/eosio/bin
 
 #Переменные конфигурации
-sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
+sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
 
 #Скрипты
-cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/start_nodeos.sh /root
-cp /root/solutions-terraform-cloudbuild-gitops/environments/node/eosio/backup.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/fabfile.py /root
 
 #cron-задачи
 echo "0 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab
@@ -35,7 +36,6 @@ killall -HUP cron
 
 #Логи
 echo -e "/var/log/nodeos.log {\n rotate 14\n daily\n compress\n missingok\n notifempty\n}" >> /etc/logrotate.d/nodeos
-
 
 #Скрипт автозапуска
 echo "/root/start_nodeos.sh" >> /etc/rc.local

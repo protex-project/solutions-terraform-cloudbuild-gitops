@@ -1,7 +1,7 @@
 locals {
   env = "node"
-  producer_pkey = "${lookup(var.pkeys, var.producer_name)}"
-  producer_pub  = "${lookup(var.pubs, var.producer_name)}"
+  producer_pkey = "${lookup(var.pkeys, var.nodes[count.index].account)}"
+  producer_pub  = "${lookup(var.pubs, var.nodes[count.index].account)}"
 }
 
 terraform {
@@ -15,7 +15,8 @@ provider "google" {
 }
 
 resource "google_compute_instance" "default" {
-  name         = var.node_name
+  count	       = length(var.nodes)
+  name         = var.nodes[count.index].name
   machine_type = var.machine_type
   zone         = var.zone
 
@@ -36,6 +37,6 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  metadata_startup_script = templatefile("./setup.sh", {producer_name = var.producer_name, producer_pkey = local.producer_pkey, producer_pub = local.producer_pub})
+  metadata_startup_script = templatefile("./setup.sh", {producer_name = var.nodes[count.index].account, producer_pkey = local.producer_pkey, producer_pub = local.producer_pub})
 }
 
