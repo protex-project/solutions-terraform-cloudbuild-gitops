@@ -8,7 +8,7 @@ provider "google" {
   zone    = var.zone
 }
 
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "node" {
   count	       = length(var.nodes)
   name         = var.nodes[count.index].name
   machine_type = var.machine_type
