@@ -17,7 +17,7 @@ mkdir /usr/local/eosio/etc
 
 #Скачивание софта и его копирование
 cd /root
-git clone https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
+git clone --branch prod https://github.com/protex-project/solutions-terraform-cloudbuild-gitops.git
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/cleos /usr/local/eosio/bin
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeos /usr/local/eosio/bin
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/keosd /usr/local/eosio/bin
