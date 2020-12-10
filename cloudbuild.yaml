@@ -54,7 +54,6 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - lock=false
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME
@@ -81,7 +80,6 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - lock=false
   - | 
       if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME      
