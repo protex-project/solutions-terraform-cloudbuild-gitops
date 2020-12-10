@@ -90,3 +90,21 @@ steps:
         echo "*******************************************************************************"
       fi
 # [END tf-apply]      
+
+# [START tf-output]
+- id: 'tf output'
+  name: 'hashicorp/terraform:0.12.24'
+  entrypoint: 'sh'
+  - '-c'
+  - | 
+      if [ -d "environments/$BRANCH_NAME/" ]; then
+        cd environments/$BRANCH_NAME      
+        terraform output > environments/$BRANCH_NAME/output.state
+	git commit -a -m "Update Terraform output"
+	git push
+      else
+        echo "***************************** SKIPPING APPLYING *******************************"
+        echo "Branch '$BRANCH_NAME' does not represent an oficial environment."
+        echo "*******************************************************************************"
+      fi
+# [END tf-output]
