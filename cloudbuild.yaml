@@ -85,7 +85,7 @@ steps:
         cd environments/$BRANCH_NAME      
         terraform apply -auto-approve
         terraform output > config/terraform.output
-	git add --all
+        git add --all
         git commit -a -m "Update Terraform output"
         git push
       else
