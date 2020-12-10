@@ -2,7 +2,6 @@ variable shardes {
  description = "Shardes list"
  type = list(string)
  default = ["shard1", "shard2"]
- }
 }
 
 variable nodes {
