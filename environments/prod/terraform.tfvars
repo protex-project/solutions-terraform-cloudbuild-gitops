@@ -1,9 +1,9 @@
 project      = "protexbc"
-region       = "us-west1"
-zone         = "us-west1-a"
+region       = "us-east1"
+zone         = "us-east1-b"
 
 network      = "protex-bc"
-subnetwork   = "protex-bc-us-west1"
+subnetwork   = "protex-bc-us-east1"
 
 machine_type = "c2-standard-8"
 
