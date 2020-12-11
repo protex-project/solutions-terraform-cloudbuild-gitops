@@ -23,12 +23,13 @@ cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/nodeo
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/bin/keosd /usr/local/eosio/bin
 
 #Переменные конфигурации
-sed 's/initXXX/${producer_name}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
+sed 's/initXXX/${producer_account}/; s/pkeyXXX/${producer_pkey}/; s/pubXXX/${producer_pub}/' /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/etc/config.ini > /usr/local/eosio/etc/config.ini
 
 #Скрипты
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/start_nodeos.sh /root
 cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/backup.sh /root
-cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/fabfile.py /root
+cp /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/credentials.json /root
+sed 's/nodeXXX/${producer_name}/; s/initXXX/${producer_account}/; s/peersXXX/${producer_peers}/' /root/solutions-terraform-cloudbuild-gitops/environments/prod/eosio/fabfile.py > /root/fabfile.py
 
 #cron-задачи
 echo "0 */12 * * * root /root/backup.sh > /dev/null 2>&1" >> /etc/crontab

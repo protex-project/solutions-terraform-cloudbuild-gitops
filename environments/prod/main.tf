@@ -31,6 +31,6 @@ resource "google_compute_instance" "node" {
     }
   }
 
-  metadata_startup_script = templatefile("./setup.sh", {producer_name = var.nodes[count.index].account, producer_pkey = lookup(var.pkeys, var.nodes[count.index].account), producer_pub = lookup(var.pubs, var.nodes[count.index].account)})
+  metadata_startup_script = templatefile("./setup.sh", {producer_name = var.nodes[count.index].name, producer_account = var.nodes[count.index].account, producer_pkey = lookup(var.pkeys, var.nodes[count.index].account), producer_pub = lookup(var.pubs, var.nodes[count.index].account), producer_peers = lookup(var.shardes, var.nodes[count.index].shard)})
 }
 
